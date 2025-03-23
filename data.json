@@ -1,0 +1,85 @@
+{
+    "home": {
+        "image": "Images/3.jpg",
+        "heading": "Hi, I Am Krishna Singh.",
+        "description": [
+            "I'm aspiring to be a Sofware Engineer studying Bachelor of Technology at Babu Banarasi Das University. I enjoy coding and designing applications. In my free time, I like playing chess, mobile games, and travelling."
+        ]
+    },
+    "about": {
+        "title": "About Me",
+        "content": [
+            "I'm Krishna Singh, an aspiring Software Engineer studying Bachelor of Technology at Babu Banarasi Das University. My passion lies in coding and designing practical solutions that make a difference.",
+            "Beyond the code, I enjoy playing chess, mobile games, and travelling. I continuously seek new skills and challenges, and I also love teaching because I believe sharing knowledge is one of the greatest gifts one can offer.",
+            "I was born on October 28, 2007 in Lucknow and experienced computers quite early, although not much with the internet. A fun fact: I used to play GTA Vice City when I was 4 years old. I don't remember the cheat codes, so I used to write them on paper. It was the first game I played, and I still remember it well. That interest in gaming eventually led me to develop an interest in game development and programming."
+        ]
+    },
+    "stories": {
+        "title": "Stories",
+        "items": [
+        ]
+    },
+    "hobbies": {
+        "title": "Hobbies",
+        "items": [
+            {
+                "heading": "Gaming",
+                "subHeading": "The Childhood Passion",
+                "description": "I enjoy playing games like Call of Duty Mobile and BGMI in my free time. In Childhood, I used to play games like GTA Vice City, San Andreas and Liberty City. I Have Also Enjoyed Need For Speed Most Wanted, Carbon and Hot Pursuit Series."
+            },
+            {
+                "heading": "Coding",
+                "subHeading": "Enjoying Creative Freedom",
+                "description": "I enjoy coding because I love creating and designing, and coding is my go-to tool for bringing ideas to life. I also know several programming languages, including Java, Python, JavaScript, and C."
+            },
+            {
+                "teaching": "Teaching",
+                "subHeading": "The Art Of Learning",
+                "description": "I enjoy teaching because I believe everyone has the right to learn. It also helps me improve my understanding of a topic and gain fresh perspectives."
+            }
+        ]
+    },
+    "gallery": {
+        "title": "Gallery",
+        "items": [
+            {
+                "image": "Images/3.jpg"
+            },
+            {
+                "image": "Images/4.jpg"
+            },
+            {
+                "image": "Images/1.jpg"
+            },
+            {
+                "image": "Images/5.jpg"
+            },
+            {
+                "image": "Images/6.jpg"
+            },
+            {
+                "image": "Images/8.jpg"
+            }
+        ]
+    },
+    "socials": {
+        "title": "Socials",
+        "items": [
+            {
+                "icon": "https://img.icons8.com/?size=100&id=xuvGCOXi8Wyg&format=png&color=000000",
+                "text": "LinkedIn",
+                "url": "https://linkedin.com/in/krishnasingh1920"
+            },
+            {
+                "icon": "https://img.icons8.com/?size=100&id=12599&format=png&color=000000",
+                "text": "GitHub",
+                "url": "https://github.com/krishnasingh1920"
+            },
+            {
+                "icon": "https://img.icons8.com/?size=100&id=32323&format=png&color=000000",
+                "text": "Instagram",
+                "url": "https://instagram.com/krishnasinghprojects"
+            }
+        ]
+    }
+}

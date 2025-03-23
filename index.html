@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Krishna : Beyond the Name</title>
+  <link rel="stylesheet" href="CSS/general.css" />
+  <link rel="stylesheet" href="CSS/about.css" />
+  <link rel="stylesheet" href="CSS/stories.css" />
+  <link rel="stylesheet" href="CSS/gallery.css" />
+  <link rel="stylesheet" href="CSS/hobbies.css" />
+  <link rel="stylesheet" href="CSS/socials.css" />
+  <link rel="stylesheet" href="CSS/home.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="nav-main">
+    <div class="nav-brand">
+      <!-- Clicking this toggles dark mode -->
+      <a href="#" class="nav-logo">KS</a>
+      <a href="#" class="nav-title">Krishna Singh</a>
+    </div>
+    <ul class="nav-items">
+      <li class="nav-item active" data-page="home"><a href="#">Home</a></li>
+      <li class="nav-item" data-page="about"><a href="#">About Me</a></li>
+      <li class="nav-item" data-page="stories"><a href="#">Stories</a></li>
+      <li class="nav-item" data-page="hobbies"><a href="#">Hobbies</a></li>
+      <li class="nav-item" data-page="gallery"><a href="#">Gallery</a></li>
+      <li class="nav-item" data-page="socials"><a href="#">Socials</a></li>
+    </ul>
+    <button class="nav-burger" aria-label="Toggle navigation">
+      <div class="burger-line line1"></div>
+      <div class="burger-line line2"></div>
+      <div class="burger-line line3"></div>
+    </button>
+  </nav>
+
+  <!-- Page Sections -->
+  <section id="home" class="page-section active">
+    <h1></h1>
+    <div class="section-content"></div>
+  </section>
+  
+  <section id="about" class="page-section">
+    <h1></h1>
+    <div class="section-content"></div>
+  </section>
+  
+  <section id="stories" class="page-section">
+    <h1></h1>
+    <div class="section-content"></div>
+  </section>
+  
+  <section id="hobbies" class="page-section">
+    <h1></h1>
+    <div class="section-content"></div>
+  </section>
+  
+  <section id="gallery" class="page-section">
+    <h1></h1>
+    <div class="section-content gallery"></div>
+  </section>
+  
+  <section id="socials" class="page-section">
+    <h1></h1>
+    <div class="section-content"></div>
+  </section>
+
+  <!-- JavaScript for Navigation, Burger Menu, Dark Mode & Dynamic Data -->
+  <script>
+    // Page navigation logic
+    const navItems = document.querySelectorAll('.nav-item');
+    const pages = document.querySelectorAll('.page-section');
+
+    navItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        navItems.forEach(i => i.classList.remove('active'));
+        pages.forEach(page => page.classList.remove('active'));
+        item.classList.add('active');
+        const pageId = item.getAttribute('data-page');
+        document.getElementById(pageId).classList.add('active');
+        if (window.innerWidth <= 768) {
+          document.querySelector('.nav-items').classList.remove('nav-active');
+          document.querySelector('.nav-burger').classList.remove('burger-active');
+        }
+      });
+    });
+
+    // Burger menu toggle
+    const burger = document.querySelector('.nav-burger');
+    const navItemsContainer = document.querySelector('.nav-items');
+    burger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navItemsContainer.classList.toggle('nav-active');
+      burger.classList.toggle('burger-active');
+    });
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && 
+          !navItemsContainer.contains(e.target) && 
+          !burger.contains(e.target)) {
+        navItemsContainer.classList.remove('nav-active');
+        burger.classList.remove('burger-active');
+      }
+    });
+
+    // Dark mode toggle triggered by clicking the KS logo
+    const navLogo = document.querySelector('.nav-logo');
+    navLogo.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Fetch dynamic data from data.json and populate sections
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        for (let key in data) {
+          const section = document.getElementById(key);
+          if (section) {
+            section.querySelector('h1').textContent = data[key].title;
+            const contentContainer = section.querySelector('.section-content');
+            contentContainer.innerHTML = ''; // Clear existing content
+
+            // Special handling for Home section (two-column layout)
+            if (key === 'home' && data[key].image && data[key].heading && data[key].description) {
+              const homeContainer = document.createElement('div');
+              homeContainer.classList.add('home-container');
+              
+              const leftDiv = document.createElement('div');
+              leftDiv.classList.add('home-image');
+              const img = document.createElement('img');
+              img.src = data[key].image;
+              img.alt = data[key].heading || "Profile Image";
+              leftDiv.appendChild(img);
+              
+              const rightDiv = document.createElement('div');
+              rightDiv.classList.add('home-text');
+              const h2 = document.createElement('h2');
+              h2.textContent = data[key].heading;
+              rightDiv.appendChild(h2);
+              
+              if (Array.isArray(data[key].description)) {
+                data[key].description.forEach(text => {
+                  const p = document.createElement('p');
+                  p.textContent = text;
+                  rightDiv.appendChild(p);
+                });
+              } else {
+                const p = document.createElement('p');
+                p.textContent = data[key].description;
+                rightDiv.appendChild(p);
+              }
+              
+              homeContainer.appendChild(leftDiv);
+              homeContainer.appendChild(rightDiv);
+              contentContainer.appendChild(homeContainer);
+              
+              // Append break for Home section (only one break)
+              const homeBreak = document.createElement('div');
+              homeBreak.classList.add('break');
+              contentContainer.appendChild(homeBreak);
+            }
+            // Handling About section
+            else if (key === 'about' && data[key].content) {
+              if (Array.isArray(data[key].content)) {
+                data[key].content.forEach(text => {
+                  const p = document.createElement('p');
+                  p.textContent = text;
+                  contentContainer.appendChild(p);
+                });
+              } else {
+                const p = document.createElement('p');
+                p.textContent = data[key].content;
+                contentContainer.appendChild(p);
+              }
+              // Append break for About section (only one break)
+              const aboutBreak = document.createElement('div');
+              aboutBreak.classList.add('break');
+              contentContainer.appendChild(aboutBreak);
+            }
+            // For Stories and Hobbies sections (structured items)
+            else if ((key === 'stories' || key === 'hobbies') && data[key].items && Array.isArray(data[key].items)) {
+              data[key].items.forEach((item, index) => {
+                const h2 = document.createElement('h2');
+                h2.textContent = item.heading;
+                contentContainer.appendChild(h2);
+                
+                const h3 = document.createElement('h3');
+                h3.textContent = item.subHeading;
+                contentContainer.appendChild(h3);
+                
+                const p = document.createElement('p');
+                p.textContent = item.description;
+                contentContainer.appendChild(p);
+                
+                if (index < data[key].items.length - 1) {
+                  const brk = document.createElement('div');
+                  brk.classList.add('break');
+                  contentContainer.appendChild(brk);
+                }
+              });
+              // Append one final break for consistency if needed
+              const finalBreak = document.createElement('div');
+              finalBreak.classList.add('break');
+              contentContainer.appendChild(finalBreak);
+            }
+            // For Gallery section (each item with image, title, description)
+            else if (key === 'gallery' && data[key].items && Array.isArray(data[key].items)) {
+              data[key].items.forEach(item => {
+                const galleryItem = document.createElement('div');
+                galleryItem.classList.add('gallery-item');
+                
+                const img = document.createElement('img');
+                img.src = item.image;
+                img.alt = item.title;
+                img.classList.add('frame');
+                galleryItem.appendChild(img);
+                
+                const h2 = document.createElement('h2');
+                h2.textContent = item.title;
+                galleryItem.appendChild(h2);
+                
+                const p = document.createElement('p');
+                p.textContent = item.description;
+                galleryItem.appendChild(p);
+                
+                contentContainer.appendChild(galleryItem);
+              });
+              const finalBreak = document.createElement('div');
+              finalBreak.classList.add('break');
+              contentContainer.appendChild(finalBreak);
+            }
+            // For Socials section (structured items with icon, text, url)
+            else if (key === 'socials' && data[key].items && Array.isArray(data[key].items)) {
+              data[key].items.forEach(item => {
+                const socialItem = document.createElement('div');
+                socialItem.classList.add('social-item');
+                
+                const link = document.createElement('a');
+                link.href = item.url;
+                link.target = "_blank";
+                
+                const icon = document.createElement('img');
+                icon.src = item.icon;
+                icon.alt = item.text;
+                icon.classList.add('social-icon');
+                link.appendChild(icon);
+                
+                const span = document.createElement('span');
+                span.textContent = item.text;
+                link.appendChild(span);
+                
+                socialItem.appendChild(link);
+                contentContainer.appendChild(socialItem);
+              });
+              const finalBreak = document.createElement('div');
+              finalBreak.classList.add('break');
+              contentContainer.appendChild(finalBreak);
+            }
+            // For other sections with generic content (array or string)
+            else if (data[key].content) {
+              if (Array.isArray(data[key].content)) {
+                data[key].content.forEach(text => {
+                  const p = document.createElement('p');
+                  p.textContent = text;
+                  contentContainer.appendChild(p);
+                });
+              } else {
+                const p = document.createElement('p');
+                p.textContent = data[key].content;
+                contentContainer.appendChild(p);
+              }
+              const finalBreak = document.createElement('div');
+              finalBreak.classList.add('break');
+              contentContainer.appendChild(finalBreak);
+            }
+          }
+        }
+      })
+      .catch(err => console.error('Error fetching data:', err));
+  </script>
+</body>
+</html>
