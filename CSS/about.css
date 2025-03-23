@@ -1,0 +1,9 @@
+#about h1{
+    margin-bottom: 1em;
+    font-size: 2.5rem;
+}
+#about .section-content p {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    text-align: justify;
+}

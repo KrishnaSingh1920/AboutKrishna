@@ -1,0 +1,32 @@
+/* Socials Section Styles */
+#socials h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+#socials .section-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 1rem;
+}
+
+#socials .social-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#socials .social-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+#socials .social-item img.social-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 0.75rem;
+}

@@ -1,0 +1,42 @@
+#gallery h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+#gallery .section-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.gallery-item {
+    max-width: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.gallery-item img.frame {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.gallery-item h2 {
+    margin-bottom: 0.5rem;
+}
+
+.gallery-item p {
+    text-align: justify;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.gallery-item + .gallery-item {
+    margin-top: 2rem;
+}
+

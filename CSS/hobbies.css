@@ -1,0 +1,25 @@
+#hobbies h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+#hobbies .section-content h2 {
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+#hobbies .section-content h3 {
+    margin-bottom: 0.5rem;
+    font-weight: normal;
+    text-align: left;
+    color: var(--nav-link-hover-color);
+}
+
+#hobbies .section-content p {
+    text-align: justify;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+#hobbies .break{
+    margin: 2em;
+}

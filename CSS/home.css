@@ -1,0 +1,100 @@
+/* Home Section */
+#home h1 {
+    margin-bottom: 20px;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    text-align: center;
+}
+
+#home .section-content p {
+    margin-bottom: 0.5rem;
+    text-align: justify;
+}
+
+/* Two-column layout for the home section */
+.home-container {
+    display: flex;
+    flex-direction: column; /* Stack vertically on small screens */
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 1400px; /* Increased max-width for better wide-screen adaptability */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Home Image */
+.home-image {
+    width: 100%;
+    max-width: 500px;
+    min-width: 400px; /* Fixed width to keep a consistent square shape */
+    aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
+    overflow: hidden;
+    border-radius: 20px; /* Slightly curved corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid rgba(255, 255, 255, 0.3); /* Semi-transparent white border */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.home-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Home Text */
+.home-text {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start; /* Align text block to the top */
+    text-align: center; /* Center text on small screens */
+    width: 100%;
+}
+
+.home-text h2 {
+    padding-top: 2rem;
+    margin-bottom: 1rem;
+    align-self: flex-start; /* Align heading to the top */
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.home-text p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    align-self: flex-start; 
+    font-size: 20px;/* Ensure paragraphs start at the top */
+}
+
+/* Responsive Behavior for Larger Screens */
+@media screen and (min-width: 900px) {
+    .home-container {
+        flex-direction: row;
+        align-items: flex-start; /* Align containers to the top */
+        justify-content: space-between;
+        width: 85%;
+        max-width: 1600px;
+    }
+    
+    .home-image, 
+    .home-text {
+        width: 50%;
+        text-align: left; /* Align text left on larger screens */
+    }
+
+    /* Align image to the left */
+    .home-image {
+        justify-content: flex-start;
+    }
+
+    /* Align text to the left and start from top */
+    .home-text {
+        align-items: flex-start;
+        margin-left: 50px; /* Adjust spacing for better readability */
+        text-align: left;
+    }
+    .home-text p{
+        font-size: clamp(1.25rem, 2vw, 1.25rem);
+    }
+}
